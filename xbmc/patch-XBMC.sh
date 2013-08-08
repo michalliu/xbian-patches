@@ -22,8 +22,7 @@
 
 PATCHES=""
 if [ "$1" = "12" ]; then
-PATCHES="TPNno.patch
-        eGalaxTouchscreen.patch
+PATCHES="eGalaxTouchscreen.patch
         NetworkCachingRedux12.patch
         EGLRes.patch
         XBianSysSum.patch
