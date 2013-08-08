@@ -22,7 +22,8 @@
 
 PATCHES=""
 if [ "$1" = "12" ]; then
-PATCHES="eGalaxTouchscreen.patch
+PATCHES="Build.patch
+        eGalaxTouchscreen.patch
         NetworkCachingRedux12.patch
         EGLRes.patch
         XBianSysSum.patch
@@ -34,7 +35,7 @@ PATCHES="eGalaxTouchscreen.patch
         PowerManager.patch
         MediaLibrary.patch"
 elif [ "$1" = "13" ]; then
-PATCHES="TPNno.patch
+PATCHES="Build.patch
         EGLRes.patch
         XBianSysSum.patch
         Wiimote.patch
