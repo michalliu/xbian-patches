@@ -20,7 +20,6 @@
 #         ReduceMenuFontSize.patch, eGalaxTouchscreen.patch
 # XBMC12: 
 
-PATCHES=""
 if [ "$1" = "12" ]; then
 PATCHES="Build.patch
         DualAudioOutput12.patch
