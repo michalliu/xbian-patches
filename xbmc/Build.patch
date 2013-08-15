@@ -18,6 +18,7 @@
         export RLINK_PATH=-Wl,-rpath-link,${SYSROOT}/lib -Wl,-rpath-link,${TARGETFS}/lib/arm-linux-gnueabihf:${TARGETFS}/usr/lib/arm-linux-gnueabihf:${TARGETFS}/lib:${TARGETFS}/usr/lib:${TARGETFS}/usr/lib/pulseaudio -Wl,-rpath-link,${TARGETFS}/opt/vc/
         export CFLAGS+=-isystem${SDKSTAGE}/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -isystem${XBMCPREFIX}/include -isystem${SDKSTAGE}/usr/include/arm-linux-gnueabihf -isystem${SDKSTAGE}/usr/include
         export CFLAGS+=-L${TARGETFS}/opt/vc/lib -L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${SYSROOT}/usr/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib ${RLINK_PATH} -L${TARGETFS}/usr/lib/arm-linux-gnueabihf -L${TARGETFS}/lib/arm-linux-gnueabihf
+
 --- a/tools/rbp/setup-sdk.sh
 +++ b/tools/rbp/setup-sdk.sh
 @@ -15,14 +15,14 @@
@@ -46,7 +47,7 @@
  CONFIGURE=./configure --prefix=$(PREFIX) --build=$(BUILD) --host=$(HOST) \
         --enable-gles --disable-sdl --disable-x11 --disable-xrandr --disable-openmax \
 -       --enable-optical-drive --enable-dvdcss --disable-joystick --enable-debug \
-+       --enable-optical-drive --enable-libbluray --enable-dvdcss --disable-joystick --disable-debug \
++       --enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug --enable-libbluray\
         --disable-crystalhd --disable-vtbdecoder --disable-vaapi --disable-vdpau \
         --disable-pulse --disable-projectm --with-platform=raspberry-pi --disable-optimizations \
         --enable-airplay --enable-libcec --enable-player=omxplayer
