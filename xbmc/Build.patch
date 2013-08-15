@@ -2,7 +2,7 @@
 +++ b/tools/rbp/depends/depends.mk
 @@ -23,13 +23,13 @@
         export PYTHON_LDFLAGS=-L$(SDKSTAGE)/usr/lib -lpython$(PYTHON_VERSION) -lpthread -ldl -lutil -lm
- else
+ else   
         export CFLAGS=-pipe -O3 -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard -mfpu=vfp -mabi=aapcs-linux -Wno-psabi -Wa,-mno-warn-deprecated -Wno-deprecated-declarations
 -#      export HOST=arm-bcm2708hardfp-linux-gnueabi
 -       export HOST=arm-linux-gnueabihf
@@ -40,14 +40,14 @@
  mkdir -p $XBMCPREFIX/lib
  mkdir -p $XBMCPREFIX/include
  
---- a/tools/rbp/depends/xbmc/Makefile	
+--- a/tools/rbp/depends/xbmc/Makefile   
 +++ b/tools/rbp/depends/xbmc/Makefile
 @@ -9,7 +9,7 @@
- 
+
  CONFIGURE=./configure --prefix=$(PREFIX) --build=$(BUILD) --host=$(HOST) \
         --enable-gles --disable-sdl --disable-x11 --disable-xrandr --disable-openmax \
 -       --enable-optical-drive --enable-dvdcss --disable-joystick --enable-debug \
-+       --enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug --enable-libbluray\
++       --enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug --enable-libbluray \
         --disable-crystalhd --disable-vtbdecoder --disable-vaapi --disable-vdpau \
         --disable-pulse --disable-projectm --with-platform=raspberry-pi --disable-optimizations \
         --enable-airplay --enable-libcec --enable-player=omxplayer
