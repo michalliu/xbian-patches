@@ -17,7 +17,8 @@
 +#      export SYSROOT=${SDKSTAGE}
         export RLINK_PATH=-Wl,-rpath-link,${SYSROOT}/lib -Wl,-rpath-link,${TARGETFS}/lib/arm-linux-gnueabihf:${TARGETFS}/usr/lib/arm-linux-gnueabihf:${TARGETFS}/lib:${TARGETFS}/usr/lib:${TARGETFS}/usr/lib/pulseaudio -Wl,-rpath-link,${TARGETFS}/opt/vc/
         export CFLAGS+=-isystem${SDKSTAGE}/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -isystem${XBMCPREFIX}/include -isystem${SDKSTAGE}/usr/include/arm-linux-gnueabihf -isystem${SDKSTAGE}/usr/include
-        export CFLAGS+=-L${TARGETFS}/opt/vc/lib -L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${SYSROOT}/usr/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib ${RLINK_PATH} -L${TARGETFS}/usr/lib/arm-linux-gnueabihf -L${TARGETFS}/lib/arm-linux-gnueabihf--- a/tools/rbp/setup-sdk.sh
+        export CFLAGS+=-L${TARGETFS}/opt/vc/lib -L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${SYSROOT}/usr/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib ${RLINK_PATH} -L${TARGETFS}/usr/lib/arm-linux-gnueabihf -L${TARGETFS}/lib/arm-linux-gnueabihf
+--- a/tools/rbp/setup-sdk.sh
 +++ b/tools/rbp/setup-sdk.sh
 @@ -15,14 +15,14 @@
  else
