@@ -11,7 +11,7 @@
 +  TOOLCHAIN=/toolchain/arm-bcm2708hardfp-linux-gnueabi
    BUILDROOT=/opt/bcm-rootfs
  fi
- 
+
 --- a/tools/rbp/depends/depends.mk
 +++ b/tools/rbp/depends/depends.mk
 @@ -23,11 +23,11 @@
@@ -33,9 +33,9 @@
 @@ -9,7 +9,7 @@
  
  CONFIGURE=./configure --prefix=$(PREFIX) --build=$(BUILD) --host=$(HOST) \
-        --enable-gles --disable-sdl --disable-x11 --disable-xrandr --disable-openmax \
--       --disable-optical-drive --disable-dvdcss --disable-joystick --disable-debug \
-+       --enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug --enable-libbluray \
-        --disable-crystalhd --disable-vtbdecoder --disable-vaapi --disable-vdpau \
-        --disable-pulse --disable-projectm --with-platform=raspberry-pi --enable-optimizations \
-        --enable-libcec --enable-player=omxplayer
+ 	--enable-gles --disable-sdl --disable-x11 --disable-xrandr --disable-openmax \
+-	--disable-optical-drive --disable-dvdcss --disable-joystick --disable-debug \
++	--enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug enable-libbluray \
+ 	--disable-crystalhd --disable-vtbdecoder --disable-vaapi --disable-vdpau \
+ 	--disable-pulse --disable-projectm --with-platform=raspberry-pi --enable-optimizations \
+ 	--enable-libcec --enable-player=omxplayer

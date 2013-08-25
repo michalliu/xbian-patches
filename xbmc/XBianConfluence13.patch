@@ -51,7 +51,7 @@
 @@ -1,5 +1,6 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <window>
-+       <onunload condition="!Player.Paused">PlayerControl(Play)</onunload>
-        <defaultcontrol>-</defaultcontrol>
-        <controls>
-                <!-- media infos -->
++	<onunload condition="!Player.Paused">PlayerControl(Play)</onunload>
+ 	<defaultcontrol>-</defaultcontrol>
+ 	<controls>
+ 		<!-- media infos -->
