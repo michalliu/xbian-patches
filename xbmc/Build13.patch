@@ -1,5 +1,14 @@
 --- a/tools/rbp/setup-sdk.sh
 +++ b/tools/rbp/setup-sdk.sh
+@@ -2,7 +2,7 @@
+ 
+ SCRIPT_PATH=$(cd `dirname $0` && pwd)
+ 
+-USE_BUILDROOT=1
++USE_BUILDROOT=0
+ 
+ if [ "$USE_BUILDROOT" = "1" ]; then
+   BUILDROOT=/opt/xbmc-bcm/buildroot
 @@ -15,9 +15,9 @@
  else
    TARBALLS=/opt/xbmc-tarballs
