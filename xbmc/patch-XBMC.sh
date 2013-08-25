@@ -21,7 +21,7 @@
 # XBMC12: DualAudioOutput12.patch
 
 if [ "$1" = "12" ]; then
-PATCHES="Build.patch
+PATCHES="Build12.patch
         eGalaxTouchscreen.patch
         EGLRes.patch
         XBianSysSum.patch
@@ -29,16 +29,16 @@ PATCHES="Build.patch
         RemoveGUISoundSettings.patch
         Wiimote.patch   
         Splash.patch
-        XBianConfluence.patch
-        MediaLibrary.patch"
+        XBianConfluence12.patch
+        MediaLibrary12.patch"
 elif [ "$1" = "13" ]; then
-PATCHES="Build.patch
+PATCHES="Build13.patch
         EGLRes.patch
         XBianSysSum.patch
         Wiimote.patch
         Splash.patch
-        XBianConfluence.patch
-        MediaLibrary.patch"
+        XBianConfluence13.patch
+        MediaLibrary13.patch"
 fi
 
 for patch in $PATCHES
