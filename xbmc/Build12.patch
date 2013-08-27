@@ -1,52 +1,41 @@
---- a/tools/rbp/setup-sdk.sh
-+++ b/tools/rbp/setup-sdk.sh
-@@ -15,14 +15,14 @@
+--- tools/rbp/setup-sdk.sh
++++ tools/rbp/setup-sdk.sh
+@@ -15,9 +15,9 @@
  else
    TARBALLS=/opt/xbmc-tarballs
    SDKSTAGE=/opt/bcm-rootfs
--  XBMCPREFIX=/opt/xbmc-bcm/xbmc-dbg
+-  XBMCPREFIX=/opt/xbmc-bcm/xbmc-bin
 +  XBMCPREFIX=/usr/local
    TARGETFS=/opt/bcm-rootfs
--  TOOLCHAIN=/home/pi/gcc-linaro-arm-linux-gnueabihf-raspbian-2012.08-20120724_linux/
+-  TOOLCHAIN=/usr/local/bcm-gcc
 +  TOOLCHAIN=/toolchain/arm-bcm2708hardfp-linux-gnueabi
    BUILDROOT=/opt/bcm-rootfs
  fi
  
--sudo mkdir -p $XBMCPREFIX
--sudo chmod 777 $XBMCPREFIX
-+mkdir -p $XBMCPREFIX
-+chmod 777 $XBMCPREFIX
- mkdir -p $XBMCPREFIX/lib
- mkdir -p $XBMCPREFIX/include
- 
---- a/tools/rbp/depends/depends.mk
-+++ b/tools/rbp/depends/depends.mk
-@@ -23,13 +23,13 @@
+--- tools/rbp/depends/depends.mk	
++++ tools/rbp/depends/depends.mk
+@@ -23,11 +23,11 @@
  	export PYTHON_LDFLAGS=-L$(SDKSTAGE)/usr/lib -lpython$(PYTHON_VERSION) -lpthread -ldl -lutil -lm
  else
- 	export CFLAGS=-pipe -O3 -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=hard -mfpu=vfp -mabi=aapcs-linux -Wno-psabi -Wa,-mno-warn-deprecated -Wno-deprecated-declarations
--#	export HOST=arm-bcm2708hardfp-linux-gnueabi
--	export HOST=arm-linux-gnueabihf
+ 	export CFLAGS=-pipe -O3 -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp -mabi=aapcs-linux -Wno-psabi -Wa,-mno-warn-deprecated -Wno-deprecated-declarations
+-	export HOST=arm-bcm2708-linux-gnueabi
 +	export HOST=arm-bcm2708hardfp-linux-gnueabi
-+#	export HOST=arm-linux-gnueabihf
  	export BUILD=i686-linux
  	export PREFIX=${XBMCPREFIX}
  	export TARGETFS
--#	export SYSROOT=/toolchain/arm-bcm2708hardfp-linux-gnueabi/arm-bcm2708hardfp-linux-gnueabi/sys-root
--	export SYSROOT=${SDKSTAGE}
+-	export SYSROOT=/usr/local/bcm-gcc/arm-bcm2708-linux-gnueabi/sys-root
 +	export SYSROOT=/toolchain/arm-bcm2708hardfp-linux-gnueabi/arm-bcm2708hardfp-linux-gnueabi/sys-root
-+#	export SYSROOT=${SDKSTAGE}
- 	export RLINK_PATH=-Wl,-rpath-link,${SYSROOT}/lib -Wl,-rpath-link,${TARGETFS}/lib/arm-linux-gnueabihf:${TARGETFS}/usr/lib/arm-linux-gnueabihf:${TARGETFS}/lib:${TARGETFS}/usr/lib:${TARGETFS}/usr/lib/pulseaudio -Wl,-rpath-link,${TARGETFS}/opt/vc/
- 	export CFLAGS+=-isystem${SDKSTAGE}/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -isystem${XBMCPREFIX}/include -isystem${SDKSTAGE}/usr/include/arm-linux-gnueabihf -isystem${SDKSTAGE}/usr/include
- 	export CFLAGS+=-L${TARGETFS}/opt/vc/lib -L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${SYSROOT}/usr/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib ${RLINK_PATH} -L${TARGETFS}/usr/lib/arm-linux-gnueabihf -L${TARGETFS}/lib/arm-linux-gnueabihf
---- a/tools/rbp/depends/xbmc/Makefile
-+++ b/tools/rbp/depends/xbmc/Makefile
+ 	export RLINK_PATH=-Wl,-rpath-link,${SYSROOT}/lib -Wl,-rpath-link,${TARGETFS}/lib -Wl,-rpath-link,${TARGETFS}/usr/lib -Wl,-rpath-link,${TARGETFS}/opt/vc/
+ 	export CFLAGS+=-isystem${XBMCPREFIX}/include -isystem${SDKSTAGE}/usr/include -isystem${SDKSTAGE}/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -isystem${SDKSTAGE}/opt/vc -isystem$(SDKSTAGE)/opt/vc/include/interface/vmcs_host/linux/
+ 	export CFLAGS+=-L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib -L${TARGETFS}/opt/vc/lib ${RLINK_PATH}
+--- tools/rbp/depends/xbmc/Makefile	
++++ tools/rbp/depends/xbmc/Makefile
 @@ -9,7 +9,7 @@
  
  CONFIGURE=./configure --prefix=$(PREFIX) --build=$(BUILD) --host=$(HOST) \
  	--enable-gles --disable-sdl --disable-x11 --disable-xrandr --disable-openmax \
--	--enable-optical-drive --enable-dvdcss --disable-joystick --enable-debug \
+-	--disable-optical-drive --disable-dvdcss --disable-joystick --disable-debug \
 +	--enable-optical-drive --enable-dvdcss --disable-joystick --disable-debug --enable-libbluray \
  	--disable-crystalhd --disable-vtbdecoder --disable-vaapi --disable-vdpau \
- 	--disable-pulse --disable-projectm --with-platform=raspberry-pi --disable-optimizations \
- 	--enable-airplay --enable-libcec --enable-player=omxplayer
+ 	--disable-pulse --disable-projectm --with-platform=raspberry-pi --enable-optimizations \
+ 	--enable-libcec --enable-player=omxplayer
