@@ -1,5 +1,5 @@
---- tools/rbp/setup-sdk.sh
-+++ tools/rbp/setup-sdk.sh
+--- a/tools/rbp/setup-sdk.sh
++++ b/tools/rbp/setup-sdk.sh
 @@ -15,9 +15,9 @@
  else
    TARBALLS=/opt/xbmc-tarballs
@@ -12,8 +12,8 @@
    BUILDROOT=/opt/bcm-rootfs
  fi
  
---- tools/rbp/depends/depends.mk	
-+++ tools/rbp/depends/depends.mk
+--- a/tools/rbp/depends/depends.mk	
++++ b/tools/rbp/depends/depends.mk
 @@ -23,11 +23,11 @@
  	export PYTHON_LDFLAGS=-L$(SDKSTAGE)/usr/lib -lpython$(PYTHON_VERSION) -lpthread -ldl -lutil -lm
  else
@@ -28,8 +28,8 @@
  	export RLINK_PATH=-Wl,-rpath-link,${SYSROOT}/lib -Wl,-rpath-link,${TARGETFS}/lib -Wl,-rpath-link,${TARGETFS}/usr/lib -Wl,-rpath-link,${TARGETFS}/opt/vc/
  	export CFLAGS+=-isystem${XBMCPREFIX}/include -isystem${SDKSTAGE}/usr/include -isystem${SDKSTAGE}/opt/vc/include -isystem$(SDKSTAGE)/opt/vc/include/interface/vcos/pthreads -isystem${SDKSTAGE}/opt/vc -isystem$(SDKSTAGE)/opt/vc/include/interface/vmcs_host/linux/
  	export CFLAGS+=-L${XBMCPREFIX}/lib -L${SYSROOT}/lib -L${TARGETFS}/lib -L${TARGETFS}/usr/lib -L${TARGETFS}/opt/vc/lib ${RLINK_PATH}
---- tools/rbp/depends/xbmc/Makefile	
-+++ tools/rbp/depends/xbmc/Makefile
+--- a/tools/rbp/depends/xbmc/Makefile	
++++ b/tools/rbp/depends/xbmc/Makefile
 @@ -9,7 +9,7 @@
  
  CONFIGURE=./configure --prefix=$(PREFIX) --build=$(BUILD) --host=$(HOST) \
